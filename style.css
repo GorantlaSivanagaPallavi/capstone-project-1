@@ -1,0 +1,111 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color:white;
+  color: black;
+}
+
+h1, h2, p {
+  margin: 0;
+  padding: 0;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 80, 168, 0.5);
+  padding: 1rem 2rem;
+  color: white;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-area img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border:  white;
+}
+.brand-text h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.brand-text p {
+  font-size: 1rem;
+  color: #fbe2d3e8;
+}
+.nav-links {
+  list-style-type: none ;
+  display: flex;
+  gap: 1rem;
+}
+.nav-links li a {
+  color: white;
+  font-weight: bold;
+}
+.main-header {
+  text-align: center;
+  padding: 5rem 2rem;
+  background:  rgb(0, 204, 255);
+  color: white;
+}
+.main-header h1 {
+  font-size: 2rem;
+}
+
+.main-header p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  background-color: white;
+  color: rgb(255, 80, 83);
+  padding: 0.7rem 1.3rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0.3rem;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #ff4343;
+  color: white;
+}
+
+.section {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.section h2 {
+  color: rgb(255, 80, 98);
+  margin-bottom: 1rem;
+}
+
+.section p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+}
+footer {
+  background-color: coral;
+  text-align: center;
+  padding: 1rem;
+  color: white;
+  font-size: 0.9rem;
+}
