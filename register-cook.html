@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Cook</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="file"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #ff5722;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #e64a19;
+    }
+  </style>
+</head>
+<body>
+  <h2>Register as a Cook</h2>
+
+  <form id="registerCookForm">
+    <label>Name:</label>
+    <input type="text" id="chefName" name="name" required>
+
+    <label>Email:</label>
+    <input type="email" id="chefEmail" name="email" required>
+
+    <label>Speciality:</label>
+    <input type="text" id="chefSpeciality" name="speciality" required>
+
+    <label>Location:</label>
+    <input type="text" id="chefLocation" name="location" required>
+
+    <label>Upload Dish Image:</label>
+    <input type="file" id="chefImage" accept="image/*" required>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <script>
+    document.getElementById("registerCookForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      let reader = new FileReader();
+      let file = document.getElementById("chefImage").files[0];
+
+      reader.onloadend = function () {
+        let chefs = JSON.parse(localStorage.getItem("chefs")) || [];
+
+        let chef = {
+          name: document.getElementById("chefName").value,
+          email: document.getElementById("chefEmail").value,
+          speciality: document.getElementById("chefSpeciality").value,
+          location: document.getElementById("chefLocation").value,
+          image: reader.result
+        };
+
+        chefs.push(chef);
+        localStorage.setItem("chefs", JSON.stringify(chefs));
+
+        alert("Cook Registered Successfully!");
+        window.location.href = "chefs.html";
+      };
+
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>

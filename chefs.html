@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Chefs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .chef-card {
+      display: inline-block;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 10px;
+      width: 220px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .chef-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .delete-btn {
+      position: absolute;
+      top: 5px;
+      right: 8px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+      width: 24px;
+      height: 24px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Our Chefs</h2>
+  <div id="chefsList"></div>
+
+  <script>
+    let chefs = JSON.parse(localStorage.getItem("chefs")) || [];
+    let container = document.getElementById("chefsList");
+
+    function renderChefs() {
+      container.innerHTML = "";
+      chefs.forEach((c, index) => {
+        let card = document.createElement("div");
+        card.className = "chef-card";
+        card.innerHTML = `
+          <button class="delete-btn" onclick="deleteChef(${index})">✖</button>
+          <img src="${c.image || ''}" alt="${c.name}">
+          <h3>${c.name}</h3>
+          <p><b>Email:</b> ${c.email}</p>
+          <p><b>Speciality:</b> ${c.speciality || 'N/A'}</p>
+          <p><b>Location:</b> ${c.location}</p>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function deleteChef(index) {
+      chefs.splice(index, 1);
+      localStorage.setItem("chefs", JSON.stringify(chefs));
+      renderChefs();
+    }
+
+    renderChefs();
+  </script>
+</body>
+</html>
